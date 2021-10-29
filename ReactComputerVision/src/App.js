@@ -4,6 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as cocossd from '@tensorflow-models/coco-ssd';
 import Webcam from "react-webcam";
 import "./App.css";
+import {drawRect} from "./utilities";
 // 2. TODO - Import drawing utility here
 // e.g. import { drawRect } from "./utilities";
 
@@ -17,7 +18,7 @@ function App() {
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
-    }, 10);
+    }, 500);
   };
 
   const detect = async (net) => {
@@ -45,8 +46,7 @@ function App() {
       // Draw mesh
       const ctx = canvasRef.current.getContext("2d");
 
-      // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)  
+      drawRect(obj, ctx);
     }
   };
 
